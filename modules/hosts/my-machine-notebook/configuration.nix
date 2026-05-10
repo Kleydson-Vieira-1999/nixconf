@@ -4,7 +4,8 @@
     imports =
       [ # Include the results of the hardware scan.
         self.nixosModules.myMachineHardware
-        self.nixosModules.niri
+        self.nixosModules.defaultPrograms
+        self.nixosModules.defaultFeatures
       ];
 
     # Bootloader.
@@ -58,9 +59,6 @@
     # Enable CUPS to print documents.
     services.printing.enable = true;
 
-    # Test
-    services.gvfs.enable = true;
-
     # Enable sound with pipewire.
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;
@@ -96,15 +94,14 @@
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
+    # Enable experimental features
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
-      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-      vscode
-      git
     ];
 
     # Some programs need SUID wrappers, can be configured further or are
@@ -116,7 +113,6 @@
     # };
 
     # List services that you want to enable:
-    services.resolved.enable = true;
 
     # Enable the OpenSSH daemon.
     # services.openssh.enable = true;
@@ -133,7 +129,7 @@
     # this value at the release version of the first install of this system.
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-    system.stateVersion = "25.11"; # Did you read the comment?
+    system.stateVersion = "26.05"; # Did you read the comment?
 
   };
 

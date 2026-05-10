@@ -4,6 +4,8 @@
     packages.myTerminalKitty = inputs.wrapper-modules.wrappers.kitty.wrap {
       inherit pkgs;
 
+      package = pkgs.kitty;
+
       settings = {
         enable_audio_bell = "no";
 
@@ -15,23 +17,29 @@
 
         cursor_trail = 3;
 
-        
+        shell = "/run/current-system/sw/bin/zsh --login";
 
-        map = ''
-          alt+1 goto_tab 1
-          alt+2 goto_tab 2
-          alt+3 goto_tab 3
-          alt+4 goto_tab 4
-          alt+5 goto_tab 5
-          alt+6 goto_tab 6
-          alt+7 goto_tab 7
-          alt+8 goto_tab 8
-          alt+9 goto_tab 93
-          ctrl+shift+w close_tab
-          ctrl+t new_tab_with_cwd
-          ctrl+shift+t new_tab
+        background_opacity = "0.85";
+        dynamic_background_opacity = "yes";
+
+        extraConfig = ''
+
+          map alt+1 goto_tab 1
+          map alt+2 goto_tab 2
+          map alt+3 goto_tab 3
+          map alt+4 goto_tab 4
+          map alt+5 goto_tab 5
+          map alt+6 goto_tab 6
+          map alt+7 goto_tab 7
+          map alt+8 goto_tab 8
+          map alt+9 goto_tab 9
+          map ctrl+shift+w close_tab
+          map ctrl+t new_tab_with_cwd
+          map ctrl+shift+t new_tab
         '';
-
+        
+        include = "/home/doctor/.config/kitty/themes/noctalia.conf";
+        
       };
     };
   };
