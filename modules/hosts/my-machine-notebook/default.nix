@@ -5,6 +5,5 @@
       self.nixosModules.myMachineConfiguration
     ];
   };
-  
 
 }
