@@ -33,11 +33,17 @@
           warp-mouse-to-focus = { };
         };
         layout = {
-          focus-ring.off = [ ]; 
+          focus-ring.off = [ ];
           border = {
             width = 4;
           };
         };
+        window-rules = [
+          {
+            matches = [ { app-id = ".*"; } ];
+            draw-border-with-background = false;
+          }
+        ];
         binds = {
           "Mod+Space".show-hotkey-overlay = [ ];
           "Mod+Return".spawn-sh = lib.getExe self'.packages.myTerminalKitty;
@@ -63,12 +69,12 @@
           "Mod+Shift+V".switch-focus-between-floating-and-tiling = [ ];
 
 
-          "Mod+O".toggle-window-rule-opacity = [ ]; 
+          "Mod+O".toggle-window-rule-opacity = [ ];
           "Mod+Shift+Q".quit = [ ];
           "Mod+Comma".consume-window-into-column = [ ];
           "Mod+Period".expel-window-from-column = [ ];
 
-          
+
           "Mod+Left".focus-column-left = [ ];
           "Mod+Right".focus-column-right = [ ];
           "Mod+Up".focus-window-up = [ ];
@@ -79,7 +85,7 @@
           "Mod+Shift+Right".move-column-right = [ ];
           "Mod+Shift+Up".move-window-up = [ ];
           "Mod+Shift+Down".move-window-down = [ ];
-          
+
 
           "Mod+Ctrl+Left".set-window-width = [  "-5%" ];
           "Mod+Ctrl+Right".set-window-width = [ "+5%" ];
@@ -87,7 +93,7 @@
           "Mod+Ctrl+Down".set-window-height = [ "+5%" ];
 
           "Mod+R".switch-preset-column-width = [ ];
- 
+
           # Bindings to switch to workspaces 0-9.
           "Mod+Alt+Up".focus-workspace-up = [ ];
           "Mod+Alt+Down".focus-workspace-down = [ ];
@@ -107,7 +113,7 @@
           include "/home/doctor/.config/niri/noctalia.kdl"
         '';
       };
-    };  
+    };
 
   };
 
