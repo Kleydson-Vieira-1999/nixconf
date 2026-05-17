@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.defaultPrograms = { config, pkgs, lib, ... }: {
+  flake.nixosModules.defaultPrograms = { pkgs, ... }: {
 
     imports = [
       self.nixosModules.myWf-recoder
