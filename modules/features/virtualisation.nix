@@ -10,6 +10,8 @@
       swtpm
       virtio-win
       dmidecode # For whonix
+
+      podman-compose
     ];
 
     # Enable libvirt for virtualization

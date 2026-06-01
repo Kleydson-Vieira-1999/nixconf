@@ -32,18 +32,40 @@
           };
           warp-mouse-to-focus = { };
         };
+
         layout = {
-          focus-ring.off = [ ];
+          focus-ring.off = _: [ ];
           border = {
-            width = 4;
+            width = 2;
           };
         };
+
         window-rules = [
           {
-            matches = [ { app-id = ".*"; } ];
+            matches = [{ app-id = ".*"; }];
             draw-border-with-background = false;
           }
         ];
+
+        outputs = {
+          "HDMI-A-1" = {
+            position = _: {
+              props = {
+                x = 0;
+                y = 0;
+              };
+            };
+          };
+          "eDP-1" = {
+            position = _: {
+              props = {
+                x = 2560;
+                y = 0;
+              };
+             };
+          };
+        };
+
         binds = {
           "Mod+Space".show-hotkey-overlay = [ ];
           "Mod+Return".spawn-sh = lib.getExe self'.packages.myTerminalKitty;
@@ -87,7 +109,7 @@
           "Mod+Shift+Down".move-window-down = [ ];
 
 
-          "Mod+Ctrl+Left".set-window-width = [  "-5%" ];
+          "Mod+Ctrl+Left".set-window-width = [ "-5%" ];
           "Mod+Ctrl+Right".set-window-width = [ "+5%" ];
           "Mod+Ctrl+Up".set-window-height = [ "-5%" ];
           "Mod+Ctrl+Down".set-window-height = [ "+5%" ];
