@@ -34,6 +34,7 @@
         };
 
         layout = {
+          gaps = 10;
           focus-ring.off = _: [ ];
           border = {
             width = 2;

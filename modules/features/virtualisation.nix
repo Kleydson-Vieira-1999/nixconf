@@ -40,6 +40,13 @@
         # Necessário para que os containers se comuniquem entre si usando nomes de domínio (ex: kibana chamando http://elasticsearch:9200)
         defaultNetwork.settings.dns_enabled = true;
       };
+
+      containers = {
+        enable = true;
+        policy = {
+          default = [ { type = "insecureAcceptAnything"; } ];
+        };
+      };
     };
 
     security.polkit.enable = true; # Enable polkit for managing permissions related to virtualization

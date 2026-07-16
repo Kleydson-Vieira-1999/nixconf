@@ -8,6 +8,8 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+    
+    antigravity-nix.url = "github:jacopone/antigravity-nix";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);

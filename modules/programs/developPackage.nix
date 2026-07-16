@@ -1,4 +1,4 @@
-{ ... }: {
+{ self, inputs, ... }: {
 
   flake.nixosModules.developPackage = { pkgs, ... }: {
 
@@ -11,16 +11,20 @@
     environment.systemPackages = with pkgs; [
       vim
       vscode
-      zed-editor
+      insomnia
+      nerd-fonts.fira-code
 
       nixd # for lsp 
       nil # for lsp
       nixpkgs-fmt # for lsp
 
-      insomnia
-      nerd-fonts.fira-code
+      zed-editor
 
-      # google-cloud-sdk
+      google-cloud-sdk
+      gemini-cli
+      inputs.antigravity-nix.packages."${pkgs.stdenv.hostPlatform.system}".default
+      inputs.antigravity-nix.packages."${pkgs.stdenv.hostPlatform.system}".google-antigravity-ide
+      inputs.antigravity-nix.packages."${pkgs.stdenv.hostPlatform.system}".google-antigravity-cli
     ];
   };
 

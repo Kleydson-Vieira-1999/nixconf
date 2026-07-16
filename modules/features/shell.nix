@@ -10,7 +10,7 @@
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
 
-      promptInit = ""; 
+      # promptInit = ""; 
 
       # Oh My Zsh configuration
       # ohMyZsh = {
