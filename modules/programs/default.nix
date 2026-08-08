@@ -9,6 +9,7 @@
     ];
     
     environment.systemPackages = with pkgs; [
+      obs-studio
 
       self.packages.${stdenv.hostPlatform.system}.myTerminalKitty
       self.packages.${stdenv.hostPlatform.system}.myBtop
