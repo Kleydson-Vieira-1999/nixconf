@@ -20,8 +20,17 @@
 
       zed-editor
 
+      # go stack
+      go
+      gopls
+      delve
+
+      nodejs24
+
+
       google-cloud-sdk
       gemini-cli
+
       inputs.antigravity-nix.packages."${pkgs.stdenv.hostPlatform.system}".default
       inputs.antigravity-nix.packages."${pkgs.stdenv.hostPlatform.system}".google-antigravity-ide
       inputs.antigravity-nix.packages."${pkgs.stdenv.hostPlatform.system}".google-antigravity-cli
