@@ -8,9 +8,11 @@
       keyMode = "vi";
     };
 
+    users.users.doctor.extraGroups = [ "dialout" ];
+
     environment.systemPackages = with pkgs; [
       vim
-      vscode
+      vscode-fhs
       insomnia
       nerd-fonts.fira-code
 
@@ -25,7 +27,14 @@
       gopls
       delve
 
-      nodejs24
+      nodejs_24
+
+      gcc
+      gdb
+      gnumake
+
+      arduino-cli
+      avrdude
 
 
       google-cloud-sdk

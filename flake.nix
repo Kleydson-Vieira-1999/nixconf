@@ -3,13 +3,21 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
+
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.inputs.flake-parts.follows = "flake-parts";
+
     import-tree.url = "github:vic/import-tree";
     
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
-    
+    wrapper-modules.inputs.nixpkgs.follows = "nixpkgs";
+
     antigravity-nix.url = "github:jacopone/antigravity-nix";
+    antigravity-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
