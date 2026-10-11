@@ -9,6 +9,10 @@ in
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
     };
+
+    # O módulo do niri define a sessão padrão como "niri"; sem sessão padrão,
+    # o GDM pré-seleciona a última sessão usada (salva pelo AccountsService).
+    services.displayManager.defaultSession = lib.mkForce null;
   };
 
   perSystem = { pkgs, lib, self', config, system, ... }: {
