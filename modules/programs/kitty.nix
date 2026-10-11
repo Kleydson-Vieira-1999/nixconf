@@ -1,4 +1,8 @@
-{ self, inputs, ... }: {
+{ self, inputs, config, ... }:
+let
+  user = config.my.user;
+in
+{
 
   perSystem = { pkgs, lib, ... }: {
     packages.myTerminalKitty = inputs.wrapper-modules.wrappers.kitty.wrap {
@@ -12,12 +16,13 @@
         font_size = 15;
         cursor_text_color = "background";
 
-        allow_remote_control = "yes";
+        allow_remote_control = "socket-only";
+        listen_on = "unix:@kitty";
         shell_integration = "enabled";
 
         cursor_trail = 3;
 
-        shell = "/run/current-system/sw/bin/zsh --login";
+        shell = "${lib.getExe pkgs.zsh} --login";
 
         background_opacity = "0.85";
         dynamic_background_opacity = "yes";
@@ -38,7 +43,7 @@
           map ctrl+shift+t new_tab
         '';
         
-        include = "/home/doctor/.config/kitty/themes/noctalia.conf";
+        include = "${user.home}/.config/kitty/themes/noctalia.conf";
         
       };
     };

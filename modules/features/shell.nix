@@ -1,8 +1,12 @@
-{ self, inputs, ... }: {
+{ self, inputs, config, ... }:
+let
+  user = config.my.user;
+in
+{
 
   flake.nixosModules.myShell = { pkgs, lib, ... }: {
 
-    users.users.doctor.shell = pkgs.zsh;
+    users.users.${user.name}.shell = pkgs.zsh;
 
     programs.zsh = {
       enable = true;

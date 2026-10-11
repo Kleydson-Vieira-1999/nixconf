@@ -1,4 +1,8 @@
-{ self, inputs, ... }: {
+{ self, inputs, config, ... }:
+let
+  user = config.my.user;
+in
+{
 
   perSystem =  { pkgs, system, ... }: {
 
@@ -9,7 +13,7 @@
 
       settings = {
         
-        color_theme = "/home/doctor/.config/btop/themes/noctalia.theme";
+        color_theme = "${user.home}/.config/btop/themes/noctalia.theme";
 
       };
     };

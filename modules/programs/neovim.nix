@@ -10,6 +10,7 @@
     # Configuração declarativa do Neovim via Nixvim
     programs.nixvim = {
       enable = true;
+      nixpkgs.source = inputs.nixpkgs; # usa o mesmo nixpkgs do sistema
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;

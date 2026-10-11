@@ -1,4 +1,8 @@
-{ self, inputs, ... }: {
+{ self, inputs, config, ... }:
+let
+  user = config.my.user;
+in
+{
 
   flake.nixosModules.developPackage = { pkgs, ... }: {
 
@@ -8,17 +12,17 @@
       keyMode = "vi";
     };
 
-    users.users.doctor.extraGroups = [ "dialout" ];
+    users.users.${user.name}.extraGroups = [ "dialout" ];
+
+    fonts.packages = [ pkgs.nerd-fonts.fira-code ];
 
     environment.systemPackages = with pkgs; [
-      vim
       vscode-fhs
       insomnia
-      nerd-fonts.fira-code
 
       nixd # for lsp 
       nil # for lsp
-      nixpkgs-fmt # for lsp
+      nixfmt # formatter (RFC style)
 
       zed-editor
 
@@ -36,9 +40,9 @@
       arduino-cli
       avrdude
 
-
       google-cloud-sdk
-      gemini-cli
+
+      claude-code
 
       inputs.antigravity-nix.packages."${pkgs.stdenv.hostPlatform.system}".default
       inputs.antigravity-nix.packages."${pkgs.stdenv.hostPlatform.system}".google-antigravity-ide

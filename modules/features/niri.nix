@@ -1,4 +1,8 @@
-{ self, inputs, ... }: {
+{ self, inputs, config, ... }:
+let
+  user = config.my.user;
+in
+{
 
   flake.nixosModules.niri = { pkgs, lib, ... }: {
     programs.niri = {
@@ -133,7 +137,7 @@
         };
 
         extraConfig = ''
-          include "/home/doctor/.config/niri/noctalia.kdl"
+          include "${user.home}/.config/niri/noctalia.kdl"
         '';
       };
     };

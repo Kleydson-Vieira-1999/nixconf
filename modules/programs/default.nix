@@ -6,6 +6,7 @@
       self.nixosModules.myWf-recoder
       self.nixosModules.zen
       self.nixosModules.developPackage
+      self.nixosModules.myNeovim
     ];
     
     environment.systemPackages = with pkgs; [
